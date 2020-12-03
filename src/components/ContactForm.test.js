@@ -38,7 +38,16 @@ it("Contains appropriate input fields", () => {
     const lnInput = document.querySelector(`input[name=lastName]`);
     const emailInput = document.querySelector(`input[name=email]`);
     const messageInput = document.querySelector(`textArea[name=message]`);
-    
+    const buttonButNotButton = document.querySelector('input[type=submit]');
+
+    userEvent.type(fnInput, 'Ian');
+    userEvent.type(lnInput, 'Luchini');
+    userEvent.type(emailInput, 'thisisemail@gamil.com');
+    userEvent.type(messageInput, 'my message');
+    userEvent.click(buttonButNotButton);
+
+    expect(document.querySelector('pre').toBe('{"firstName": "My","lastName": "Full Name","email": "firstandlastname@gmail.com ","message": "I really enjoy doing all of this tedious work."}'));
+
 
     // const inputs = fields.map(el => document.querySelector(`${el.tag}[name=${el.name}]`));
     // const submit = document.querySelector('input[type=submit]');
